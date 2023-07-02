@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vfedorov <vfedorov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valeriafedorova <valeriafedorova@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:50:45 by vfedorov          #+#    #+#             */
-/*   Updated: 2023/06/18 19:43:17 by vfedorov         ###   ########.fr       */
+/*   Updated: 2023/07/02 18:41:08 by valeriafedo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,17 @@
 
 int main(int ac, char **av)
 {
-	t_game *game;
-	t_window *window;
-	t_wall *wall;
+	t_game game;
 	
-	game = malloc(sizeof(t_game));
-	window = malloc(sizeof(t_window));
-	wall = malloc(sizeof(t_wall));
-
-	game->window = *window;
-	game->wall = *wall;
-	
-	char *relative_path = "./sprites/brick.xpm";
-	(void)av;
-	(void)ac;
-	int w = 100;
-	int h = 100;
-	game->fmlx = mlx_init();
-	game->window = new_window(game->fmlx, 1000, 900, "HI!");
-	game->wall.brick = mlx_xpm_file_to_image(game->fmlx, relative_path, &w, &h);
-	// printf("%p\n", game->wall->brick);
-	opspr(game);
-	mlx_loop(game->fmlx);
+	if (ac < 2)
+		write(2, "Error\n", 6);
+	if (is_it_ber(av[1]) == 0)
+	{
+		write(1, "this is not ber\n", 16);
+		exit(1);
+	}	
+	game.nmap = av[1];
+	read_map(av[1], &game);
+	mlx_hook(game.win, 2, 1L<<0, for_key, &game);
+	shaw_all(av[1], &game);
 }

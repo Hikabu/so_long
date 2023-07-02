@@ -1,9 +1,11 @@
 NAME			=	so_long
 BON				=	longishe
-SRCS 			=	main.c cre_window.c so_long.c
+SRCS 			=	main.c cre_window.c so_long.c ready_map.c checker.c\
+					get_next_line.c get_next_line_utils.c vsuako_raz.c shawall.c\
+
 HEADERS 		=	so_long.h
 OBJ 			=	$(SRCS:.c=.o)
-CFLAGS 			=	-Wall -Wextra -Werror -Imlx -g -fsanitize=address
+CFLAGS 			=	-Wall -Wextra -Werror -Imlx -g #-fsanitize=address
 IFLAGS			=	-Ilibft
 LFLAGS			=	-Llibft -lft
 MFLAGS			=	-Lmlx -lmlx -framework OpenGL -framework AppKit

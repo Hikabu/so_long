@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcpy.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vfedorov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: valeriafedorova <valeriafedorova@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 17:26:05 by vfedorov          #+#    #+#             */
-/*   Updated: 2023/01/31 15:14:49 by vfedorov         ###   ########.fr       */
+/*   Updated: 2023/06/19 00:35:59 by valeriafedo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t				i;
-	unsigned int		k;
-
-	k = 0;
+	
 	i = 0;
 	if (dstsize != 0)
 	{
