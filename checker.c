@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valeriafedorova <valeriafedorova@studen    +#+  +:+       +#+        */
+/*   By: vfedorov <vfedorov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 21:32:38 by vfedorov          #+#    #+#             */
-/*   Updated: 2023/07/02 00:17:36 by valeriafedo      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:12:57 by vfedorov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,22 @@ int	count_y(char **map)
 		i++;
 	return (i);
 }
+
 void	give_value_struct(t_game *game, char **map)
 {
 	game->x = ft_strlen(map[0]);
-	// sprite_struct(game);
+	game->shag = 0;
+	game->collect = 0;
+	game->vsego = count_coll(game);
 	game->y = count_y(map);
-	dprintf(2, "Height: %d\n", game->x);
 	game->fmlx = mlx_init();
 	game->img_w = 64;
 	game->img_h = 64;
+	game->wall = pxpm(WALL, game);
+	game->pol = pxpm(BRICK, game);
+	game->sobirat = pxpm(COLLECT, game);
+	game->igrok = pxpm(PLAYER, game);
+	game->exit = pxpm(EXIT, game);
 }
 
 int	is_it_ber(char *av)
@@ -49,12 +56,6 @@ int	is_it_ber(char *av)
 
 void	is_valid(char **map)
 {
-	// int i = 0;
-	// while (map[i])
-	// {
-	// 	dprintf(1, "%s\n", map[i]);
-	// 	i++;
-	// }
 	check_mshape(map);
 	check_walls(map);
 	check_char(map);
@@ -66,16 +67,16 @@ void	read_map(char *map, t_game *game)
 	char	*line;
 	char	*join;
 	char	**split;
-	
+
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
 		write(2, "file doesn't exist\n", 19);
 	line = get_next_line(fd);
 	if (line == NULL || line[0] == '\n')
-		{
-			write(2, "empty file\n", 11);
-			exit(1);
-		}
+	{
+		write(2, "empty file\n", 11);
+		exit(1);
+	}
 	join = NULL;
 	while (line)
 	{		
@@ -86,12 +87,5 @@ void	read_map(char *map, t_game *game)
 	free(join);
 	is_valid(split);
 	game->map = split;
-	// int i = 0;
-	// while (game->map[i])
-	// {
-	// 	dprintf(1, "%s\n", game->map[i]);
-	// 	i++;
-	// }
-	free_split(split);
 	close(fd);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valeriafedorova <valeriafedorova@studen    +#+  +:+       +#+        */
+/*   By: vfedorov <vfedorov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/19 13:52:16 by valeriafedo       #+#    #+#             */
-/*   Updated: 2023/06/29 14:36:27 by valeriafedo      ###   ########.fr       */
+/*   Created: 2023/07/03 12:44:19 by vfedorov          #+#    #+#             */
+/*   Updated: 2023/07/03 13:23:01 by vfedorov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	check_mshape(char **map)
 		}
 	}
 }
+
 void	check_wall(char *wall)
 {
 	int	i;
@@ -41,6 +42,7 @@ void	check_wall(char *wall)
 		exit(1);
 	}
 }
+
 void	check_walls(char **map)
 {
 	int	i;
@@ -62,24 +64,22 @@ void	check_walls(char **map)
 		check_wall(map[i]);
 	}
 }
+
 void	check_chars(char map, t_game *game)
 {
 	if (map != '0' && map != '1' && map != 'E'
 		&& map != 'C' && map != 'P')
-		{
-			write(2, "does not exist\n", 15);
-			exit (1);
-		}
+	{
+		write(2, "does not exist\n", 15);
+		exit (1);
+	}
 	if (map == 'P' && !game->player)
-		{
-			write(2, "wrong number of Players\n", 24);
-			exit(1);
-		}
+	{
+		write(2, "wrong number of Players\n", 24);
+		exit(1);
+	}
 	if (map == 'P' && game->player)
-		{
-			// dprintf(1, "%d\n", game->player);
-			game->player = 0;
-		}
+		game->player = 0;
 	if (map == 'E' && game->exid)
 		game->exid = 0;
 	if (map == 'C' && game->cnt)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valeriafedorova <valeriafedorova@studen    +#+  +:+       +#+        */
+/*   By: vfedorov <vfedorov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:50:10 by vfedorov          #+#    #+#             */
-/*   Updated: 2023/06/22 14:22:44 by valeriafedo      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:29:09 by vfedorov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

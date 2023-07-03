@@ -3,23 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   vsuako_raz.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valeriafedorova <valeriafedorova@studen    +#+  +:+       +#+        */
+/*   By: vfedorov <vfedorov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 12:50:59 by valeriafedo       #+#    #+#             */
-/*   Updated: 2023/06/23 14:49:02 by valeriafedo      ###   ########.fr       */
+/*   Created: 2023/07/03 12:44:29 by vfedorov          #+#    #+#             */
+/*   Updated: 2023/07/03 13:27:44 by vfedorov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void free_split(char **s)
+void	free_split(char **s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s && *s[i])
 		free(s[i]);
 	free(s);
+}
+
+void	ft_putstr(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
 }
 
 void	*ft_free(char **s)
@@ -28,6 +40,7 @@ void	*ft_free(char **s)
 	*s = NULL;
 	return (NULL);
 }
+
 char	*new_strjoin(char *s1, char *s2)
 {
 	int		i;
@@ -53,4 +66,26 @@ char	*new_strjoin(char *s1, char *s2)
 	res[l1 + l2] = 0;
 	(ft_free(&s1) || ft_free(&s2));
 	return (res);
+}
+
+int	count_coll(t_game *game)
+{
+	char	*str;
+	int		i;
+	int		ret;
+
+	i = 0;
+	ret = 0;
+	while (game->map[i])
+	{
+		str = game->map[i];
+		while (*str)
+		{
+			if (*str == 'C')
+				ret++;
+			str++;
+		}
+		i++;
+	}
+	return (ret);
 }

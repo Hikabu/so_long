@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valeriafedorova <valeriafedorova@studen    +#+  +:+       +#+        */
+/*   By: vfedorov <vfedorov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:30:48 by vfedorov          #+#    #+#             */
-/*   Updated: 2023/06/22 14:27:51 by valeriafedo      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:29:31 by vfedorov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str[dl1] = '\0';
 	return (str);
 }
+
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
